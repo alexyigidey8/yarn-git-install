@@ -1,6 +1,6 @@
 {
   "name": "yarn-git-install",
-  "version": "0.2.0",
+  "version": "0.1.0",
   "description": "Clones and (re)installs packages from remote git repos",
   "main": "build/index.js",
   "bin": {
@@ -28,7 +28,7 @@
   },
   "author": "Tadeusz Łazurski (http://lazurski.pl/)",
   "contributors": [
-      "Stephen Tuso"
+    "Stephen Tuso"
   ],
   "license": "ISC",
   "dependencies": {
