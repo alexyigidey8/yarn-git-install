@@ -1,5 +1,5 @@
 {
-  "name": "npm-git-install",
+  "name": "yarn-git-install",
   "version": "0.2.0",
   "description": "Clones and (re)installs packages from remote git repos",
   "main": "build/index.js",
@@ -24,9 +24,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/lzrski/npm-git-install.git"
+    "url": "https://github.com/stephentuso/yarn-git-install"
   },
   "author": "Tadeusz Łazurski (http://lazurski.pl/)",
+  "contributors": [
+      "Stephen Tuso"
+  ],
   "license": "ISC",
   "dependencies": {
     "commander": "^2.9.0",
