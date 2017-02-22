@@ -24,6 +24,7 @@ cli
   .option '-c --package <path>', 'Optional package.json file location [package.json]', "package.json"
   .option '-v --verbose', 'be verbose'
   .option '-d --dry',     'just print what packages would be installed'
+  .option '-y --yarn',    'use yarn to install dependencies'
 
 # Helper functions
 # Most of the work with promises

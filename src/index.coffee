@@ -27,6 +27,7 @@ reinstall = (options = {}, pkg) ->
   {
     silent
     verbose
+    yarn
   } = options
 
   curried = ({ url, revision }) ->
@@ -54,7 +55,7 @@ reinstall = (options = {}, pkg) ->
         exec cmd, { cwd: tmp, stdio }
 
       .then ->
-        cmd = 'npm install'
+        cmd = (yarn ? 'yarn' : 'npm') + ' install'
         if verbose then console.log "executing `#{cmd}` in `#{tmp}`"
 
         exec cmd, { cwd: tmp, stdio }
