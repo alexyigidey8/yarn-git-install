@@ -1,10 +1,10 @@
 {
   "name": "yarn-git-install",
-  "version": "0.4.1",
+  "version": "0.4.5",
   "description": "Clones and (re)installs packages from remote git repos",
   "main": "build/index.js",
   "bin": {
-    "npm-git": "build/cli.js"
+    "yarn-git": "build/cli.js"
   },
   "scripts": {
     "prepublish": "coffee --no-header -cbmo build src",
@@ -13,6 +13,7 @@
   },
   "keywords": [
     "npm",
+    "yarn",
     "install",
     "packages",
     "git",
@@ -29,7 +30,7 @@
   "author": "Tadeusz Łazurski (http://lazurski.pl/)",
   "contributors": [
     "Tadeusz Łazurski (http://lazurski.pl/)",
-    "Stephen Tuso"
+    "Stephen Tuso (https://stephentuso.github.io/)"
   ],
   "license": "ISC",
   "dependencies": {

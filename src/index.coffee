@@ -83,7 +83,7 @@ reinstall = (options = {}, pkg) ->
         }
 
       .then (metadata) ->
-        cmd = "yarn install #{tmp}"
+        cmd = "npm install #{tmp}"
         if verbose then console.log "executing #{cmd}"
 
         exec cmd, { stdio }

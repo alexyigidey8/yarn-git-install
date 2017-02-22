@@ -1,4 +1,4 @@
-NPM Git Install
+Yarn Git Install
 ===============
 
 Clones and (re)installs packages from remote git repos. It is meant as a temporary solution until [npm/npm#3055][3055] is resolved.
@@ -7,18 +7,18 @@ Install
 -------
 
 ```sh
-npm install --save npm-git-install
+yarn add yarn-git-install
 ```
 
 Use
 ---
 
-In your `pacakge.json` add:
+In your `package.json` add:
 
 ```javascript
 {
   "scripts": {
-    "install": "npm-git install"
+    "install": "yarn-git install"
   }
   "gitDependencies": {
     "private-package-name": "git@private.git.server:user/repo.git#revision",
@@ -32,13 +32,13 @@ Obviously replace `*-package-name` and git URLs with values relevant to your pro
 Then install your dependencies as usual:
 
 ```sh
-npm install
+yarn install
 ```
 
 If you want to lock versions of git dependencies, use:
 
 ```sh
-./node_modules/.bin/npm-git install --save
+./node_modules/.bin/yarn-git install --save
 ```
 
 This will reinstall all git dependencies, but also write last matching commit's sha to `package.json`, effectively locking the versions.
@@ -46,7 +46,7 @@ This will reinstall all git dependencies, but also write last matching commit's 
 You can also add a dependency and lock it's sha in one go:
 
 ```sh
-./node_modules/.bin/npm-git install --save me@my.git.server:me/my-awesome-thing.git
+./node_modules/.bin/yarn-git install --save me@my.git.server:me/my-awesome-thing.git
 ```
 
 This is probably the safest option, as it guarantees the same revision to be installed every time.
@@ -56,7 +56,7 @@ Now it should be easy to deploy, as long as the git executable is available in t
 Why
 ---
 
-IMO there is a serious defect in current versions of NPM regarding installation process of dependencies from git repositories. It basically prevents us from installing anything that needs a build step directly from git repos. Because of that some authors are keeping build artifacts in the repos, which I would consider a hurdle at best. Here is [relevant issue with ongoing discussion][3055].
+IMO there is a serious defect in current versions of NPM/Yarn regarding installation process of dependencies from git repositories. It basically prevents us from installing anything that needs a build step directly from git repos. Because of that some authors are keeping build artifacts in the repos, which I would consider a hurdle at best. Here is [relevant issue with ongoing discussion][3055].
 
 ### TL/DR:
 
@@ -70,7 +70,7 @@ How
 ### From command line
 
 ```sh
-npm-git install
+yarn-git install
 ```
 
 This simple script will do the following for every `<url>` of `gitDependencies` section of `package.json`:
@@ -79,18 +79,18 @@ This simple script will do the following for every `<url>` of `gitDependencies` 
 
     using `git clone <url>`.
 
-1.  Run `npm install` in this directory
+1.  Run `yarn install` in this directory
 
     which will trigger `prepublish` hook of the package being installed.
 
-1.  then run `npm install <temporary directory>` in your project path.
+1.  then run `yarn install <temporary directory>` in your project path.
 
 In effect you will get your dependency properly installed.
 
 You can optionally specify different paths for `package.json`:
 
 ```sh
-npm-git install -c git-dependencies.json
+yarn-git install -c git-dependencies.json
 ```
 
 You may want to do this if you find it offensive to put non-standard section in your `package.json`.
@@ -100,7 +100,7 @@ Also try `--help` for more options.
 Just like with plain NPM, on the command line you can specify a space separated list of packages to be installed:
 
 ```sh
-npm-git install https://github.com/someone/awesome.git me@git.server.com/me/is-also-awesome.git#experimantal-branch
+yarn-git install https://github.com/someone/awesome.git me@git.server.com/me/is-also-awesome.git#experimantal-branch
 ```
 
 After hash you can specify a branch name, tag or a specific commit's sha. By default `master` branch is used.
@@ -109,7 +109,7 @@ With `--save` option it will write the sha of tha HEAD (i.e. last matching commi
 
 ### API
 
-You can also use it programmatically. Just require `npm-git-install`. It exposes four methods:
+You can also use it programmatically. Just require `yarn-git-install`. It exposes four methods:
 
   * `discover (path)`
 
@@ -133,7 +133,7 @@ You can also use it programmatically. Just require `npm-git-install`. It exposes
 
     1.  Checks out `package.revision`
 
-    1.  runs `npm install` at cloned repos directory
+    1.  runs `yarn install` at cloned repos directory
 
     1.  installs the package from there.
 
@@ -166,7 +166,7 @@ If you are a [Gulp][] user, then it should be easy enough to integrate it with y
 
 I tried and it's hard, because NPM supports [fancy things as Git URLs][URLs]. See `messy-auto-discovery` branch. You are welcome to take it from where I left.
 
-There is also another reason. User may not want to reinstall all Git dependencies this way. For example I use gulp version 4, which is only available from GitHub and it is perfectly fine to install it with standard NPM. I don't want to rebuild it on my machine every time I install it. Now I can leave it in `devDependencies` and only use `npm-git-install` for stuff that needs it.
+There is also another reason. User may not want to reinstall all Git dependencies this way. For example I use gulp version 4, which is only available from GitHub and it is perfectly fine to install it with standard NPM. I don't want to rebuild it on my machine every time I install it. Now I can leave it in `devDependencies` and only use `yarn-git-install` for stuff that needs it.
 
 [URLs]: https://docs.npmjs.com/files/package.json#git-urls-as-dependencies
 [3055]: https://github.com/npm/npm/issues/3055

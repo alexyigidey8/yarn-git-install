@@ -17,7 +17,7 @@ cwd         = process.cwd()
 cli
   .version '0.0.0' # TODO: Read from package.json
   .description """
-    A utility to properly install npm git dependencies.
+    A utility to properly install yarn git dependencies.
   """
   .option '-q --silent',  'suppress child processes output'
   .option '-s --save',    'resolve URLs to sha and save it to package file'
