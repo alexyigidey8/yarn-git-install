@@ -1,6 +1,8 @@
 Yarn Git Install
 ===============
 
+NOTE: This is a fork of [npm-git-install](https://github.com/lzrski/npm-git-install), converted to use yarn. If you happen come across this and yarn now supports this, please open an issue and let me know.
+
 Clones and (re)installs packages from remote git repos. It is meant as a temporary solution until [npm/npm#3055][3055] is resolved.
 
 Install
